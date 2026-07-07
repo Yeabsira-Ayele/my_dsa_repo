@@ -1,0 +1,16 @@
+class Solution(object):
+    def isAnagram(self, s, t):
+        
+        #  0(n) an O(u)
+        if len(s) != len(t):
+            return False
+        # time and space o(1)
+        count1 = {}
+        count2 = {}
+       #    time O(n)+ O(n) = O(2n) =O(n) an spce O(1)
+        for char in s:
+            count1[char] = count1.get(char , 0) + 1
+        for char in t:
+            count2[char] = count2.get(char , 0) + 1
+        #  time O(n) an space O(1)
+        return count1 == count2
