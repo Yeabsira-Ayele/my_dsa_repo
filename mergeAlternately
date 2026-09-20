@@ -1,0 +1,43 @@
+class Solution(object):
+    def mergeAlternately(self, word1, word2):
+        merge = ""  # Output grows with input size: O(n + m)
+
+        w1 = len(word1)  # O(1) — stores one integer
+        w2 = len(word2)  # O(1) — stores one integer
+
+        # Choose the shorter word and its length
+        # This block uses only a constant number of operations: O(1)
+        if w1 < w2:
+            w = w1       # O(1)
+            word = word2
+        elif w2 < w1:
+            w = w2       # O(1)
+            word = word1
+        else:
+            w = w1       # O(1)
+            word = ""
+
+        # Runs min(n, m) times
+        # Each iteration does constant work: O(1)
+        # Total: O(min(n, m))
+        for i in range(w):
+            merge += word1[i]
+            merge += word2[i]
+
+        # Adds the remaining characters from the longer word
+        # Runs |n - m| times
+        # Total: O(|n - m|)
+        for i in range(w, len(word)):
+            merge += word[i]
+
+        return merge
+
+
+# Time Complexity:
+# O(min(n, m)) + O(|n - m|)
+# = O(n + m)
+
+# Space Complexity:
+# O(n + m) because the output string 'merge'
+# grows to contain all characters from word1 and word2.
+        
