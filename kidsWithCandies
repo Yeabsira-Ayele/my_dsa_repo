@@ -1,0 +1,29 @@
+class Solution(object):
+    def kidsWithCandies(self, candies, extraCandies):
+        max = sorted(candies)[len(candies) - 1]
+        # sorted O(nlogn)-t and O(n)-s
+        ans = []
+        for i in candies:
+            if i + extraCandies >= max:
+                ans.append(True)
+            else:
+                ans.append(False)
+        return ans
+
+        #O(n + nlogn ) O(nlogn) -- time c
+        # O(n ) -- space c
+&&&&&&&&&&&&&&&&&&&
+class Solution(object):
+    def kidsWithCandies(self, candies, extraCandies):
+        max_candies = max(candies)
+     
+        ans = []
+        for i in candies:
+            if i + extraCandies >= max_candies:
+                ans.append(True)
+            else:
+                ans.append(False)
+        return ans
+
+        #O(n + n ) O(n) -- time c
+        # O(n ) -- space c
