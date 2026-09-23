@@ -1,0 +1,25 @@
+class Solution(object):
+    def reverseWords(self, s):
+        ans = []
+        res = ""
+        char = ""
+
+        for i in range(len(s)):
+            if s[i] != " ":
+                char += s[i]
+
+            if (s[i] == " " or i == len(s) - 1) and char != "":
+                ans.append(char)
+                char = ""
+
+        for i in range(len(ans) - 1, -1, -1):
+            res += ans[i]
+
+            if i != 0:
+                res += " "
+
+        return res
+            
+
+
+        
