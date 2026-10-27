@@ -1,0 +1,9 @@
+class Solution(object):
+    def buildArray(self, nums):
+        ans = []
+        for num in nums:
+            ans.append(nums[num])
+        return ans 
+
+        # time o(n) space 0(n)
+        
