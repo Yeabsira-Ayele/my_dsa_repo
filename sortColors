@@ -1,0 +1,36 @@
+class Solution(object):
+    def sortColors(self, nums):
+        for i in range(len(nums)):
+
+            swapped = False
+            for j in range(len(nums) -i -1):
+                if nums[j] > nums[j + 1]:
+                    swapped = True
+                    nums[j] , nums[j + 1] = nums[j + 1] , nums[j ]
+        return nums
+
+
+
+
+
+
+        # res = {0: 0, 1: 0, 2: 0}
+        # result = []
+        # for num in nums:
+        #     if num == 0:
+        #         res[0] += 1
+        #     elif num == 1:
+        #         res[1] += 1
+        #     elif num == 2:
+        #         res[2] +=1
+        
+        # for key , item in res.items():
+        #     while item != 0:
+        #         result.append(key)
+        #         item -= 1
+        
+        # nums[:] = result
+
+
+
+        
