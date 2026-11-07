@@ -1,0 +1,17 @@
+class Solution(object):
+    def maxCoins(self, piles):
+        piles.sort()
+        n = len(piles)
+        m = n - n/3 - n/3
+
+        res = 0
+
+        for i in range(n-2 , m - 1, -2):
+            res += piles[i]
+        return res
+
+        # time  O(n) + o(logn) 
+        # space o(1)
+
+        
+        
