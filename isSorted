@@ -1,0 +1,17 @@
+class Solution:
+    def isSorted(self, arr):
+        # code here
+        f = 0
+        b = len(arr) -1
+        
+        if len(arr) == 1 :
+            return True
+       
+
+        while f <= b:
+            if arr[f] <= arr[f +1] and arr[b] >= arr[b-1]:
+                f += 1
+                b -= 1
+            else:
+                return False
+        return True
