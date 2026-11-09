@@ -1,0 +1,24 @@
+class Solution(object):
+    def dividePlayers(self, skill):
+        skill.sort()
+        f =0
+        b = len(skill) -1
+        num = skill[f] + skill[b] 
+        ans = []
+        result = 0
+
+        while f < b:
+            if skill[f] + skill[b] == num:
+                chemistry = skill[f] * skill[b]
+                ans.append(chemistry)
+                f += 1
+                b -=1
+            else:
+                return -1 
+      
+        for num in ans:
+            result += num
+
+        return result 
+ 
+      # o(nlongn) 0n
