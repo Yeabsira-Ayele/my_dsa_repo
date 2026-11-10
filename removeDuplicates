@@ -1,0 +1,24 @@
+class Solution(object):
+    def removeDuplicates(self, nums):
+        u = 1
+        c = 0
+        n = len(nums)
+
+        for c in range(1 , n):
+            if nums[c-1] == nums[c]:
+                continue
+            nums[u] = nums[c]
+            u += 1
+            
+        nums[:] = nums[:u]
+   # space 01 and time 0n   
+          
+        # lst = []
+        # k = 0
+        # for num in nums:
+        #     if num not in lst:
+        #         lst.append(num)
+
+        #         k +=1
+        # nums[:] = lst
+        
