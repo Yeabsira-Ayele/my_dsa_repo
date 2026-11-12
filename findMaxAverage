@@ -1,0 +1,25 @@
+class Solution(object):
+    def findMaxAverage(self, nums, k):
+        l=0
+        n = len(nums)
+        
+        curr_sum  = 0
+        
+        for r in range(k):
+            curr_sum += nums[r]
+        
+        max_sum = curr_sum
+        
+        while r < n -1:
+            r +=1
+            l += 1
+            curr_sum = curr_sum - nums[l-1] + nums[r]
+            max_sum = max( curr_sum , max_sum )
+            
+        if max_sum == 0:
+            return 0
+        return max_sum / float(k)
+            
+
+
+        
