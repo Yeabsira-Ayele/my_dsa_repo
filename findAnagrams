@@ -1,0 +1,76 @@
+class Solution(object):
+    def findAnagrams(self, s, p):
+        """
+        :type s: str
+        :type p: str
+        :rtype: List[int]
+        """
+        
+        m = len(p)
+        n = len(s)
+        l = 0
+        r = m-1
+
+        if m > n:
+            return []
+
+        counterP={}
+        counterS={}
+
+        anagram = []
+
+        for i in range(m):
+            if p[i] not in counterP:
+                counterP[p[i]] = 1
+            else:
+                counterP[p[i]] += 1
+            if s[i] not in counterS:
+                counterS[s[i]] = 1
+            else:
+                counterS[s[i]] += 1
+        if counterS == counterP:
+            anagram.append(l)
+        
+        while r < n -1:
+            r += 1
+            
+            counterS[s[l]] -=1
+            if counterS[s[l]] == 0:
+                del counterS[s[l]]
+            l += 1
+
+            if s[r] not in counterS:
+                counterS[s[r]] = 1
+            else:
+                counterS[s[r]] += 1
+           
+            
+            if counterS == counterP:
+                anagram.append(l)
+            
+           
+        
+        return anagram
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
