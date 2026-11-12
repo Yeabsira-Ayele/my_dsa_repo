@@ -1,0 +1,23 @@
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        
+        l = 0
+        r = 0
+        n = len(s)
+        window = set()
+        count = 0
+        max_ = count
+
+        while r < n:
+
+            if s[r] not in window:
+                window.add(s[r])
+                r += 1
+                count +=1
+                
+            else:
+                window.remove(s[l])
+                count-=1
+                l += 1
+            max_ = max(count , max_)
+        return max_
