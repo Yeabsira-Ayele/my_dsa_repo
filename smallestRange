@@ -1,0 +1,57 @@
+
+class Solution(object):
+    def smallestRange(self, nums):
+
+        elements = []
+
+        # Step 1: Combine all lists and remember their original indexes
+        for list_index in range(len(nums)):
+            for number in nums[list_index]:
+                elements.append((number, list_index))
+
+        # Step 2: Sort all elements by their values
+        elements.sort()
+
+        left = 0
+        list_count = len(nums)
+
+        # Count how many elements each original list contributes
+        frequency = [0] * list_count
+
+        covered_lists = 0
+
+        smallest_range = float('inf')
+        result = [0, float('inf')]
+
+        # Step 3: Sliding window
+        for right in range(len(elements)):
+
+            number, list_index = elements[right]
+
+            if frequency[list_index] == 0:
+                covered_lists += 1
+
+            frequency[list_index] += 1
+
+            # Step 4: Shrink while every list is represented
+            while covered_lists == list_count:
+
+                left_number = elements[left][0]
+                right_number = elements[right][0]
+
+                current_range = right_number - left_number
+
+                if current_range < smallest_range:
+                    smallest_range = current_range
+                    result = [left_number, right_number]
+
+                left_list_index = elements[left][1]
+
+                frequency[left_list_index] -= 1
+
+                if frequency[left_list_index] == 0:
+                    covered_lists -= 1
+
+                left += 1
+
+        return result
