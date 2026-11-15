@@ -1,0 +1,48 @@
+class Solution(object):
+    def characterReplacement(self, s, k):
+        w = 0
+        l =0
+       
+        counts = [0] * 26
+        n = len(s)
+
+        for r in range(n):
+
+            counts[ord(s[r]) - 65] +=1
+            h = k
+
+            while (r -l +1) - max(counts) > k:
+                counts[ord(s[l]) -65] -= 1
+                l +=1
+
+            w = max(w , r-l+1)
+        
+        return w
+
+
+
+
+
+
+
+
+
+        # w = s[0]
+        # l = 0
+        # h = k
+        # for r in range(1 , len(s)):
+        #     if s[l] == s[r]:
+        #         w = max(w , r -l + 1)
+        #     else:
+        #         while h >0:
+        #             w = max(w , r -1 + 1)
+        #             h-=1
+        #         else:
+        #             l = w
+        #             h = k        
+        
+        # return w
+
+                
+
+        
