@@ -1,0 +1,22 @@
+class Solution(object):
+    def totalFruit(self, fruits):
+        count = collections.defaultdict(int)
+        l , window_length , res = 0,0,0
+
+        for r in range(len(fruits)):
+            count[fruits[r]] += 1
+            window_length += 1
+
+            while len(count) > 2:
+                f = fruits[l]
+                count[f] -= 1
+                window_length -= 1
+            
+                l+=1
+
+                if not count[f]:
+                    count.pop(f)
+            res = max(res ,  window_length)
+        
+        return res
+
