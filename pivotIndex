@@ -1,0 +1,33 @@
+class Solution(object):
+    def pivotIndex(self, nums):
+        sumLeft = 0
+        sumRight = 0
+        pivot = 0
+        n =  len(nums)
+
+        cum_sum = []
+        total =0
+
+        for num in nums:
+            total += num
+            cum_sum.append(total)
+        
+        while pivot < n:
+            if pivot == 0:
+                sumLeft = 0
+                sumright = cum_sum[n-1] - cum_sum[pivot]
+            elif pivot == n-1:
+                sumright = 0
+                sumLeft = cum_sum[pivot -1]
+            else:
+                sumright = cum_sum[n-1] - cum_sum[pivot]
+                sumLeft = cum_sum[pivot-1] 
+            if sumLeft == sumright:
+                return pivot
+            pivot += 1
+        
+        
+        return -1 
+
+        
+        
